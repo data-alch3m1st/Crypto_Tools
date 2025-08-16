@@ -1,11 +1,15 @@
-# cryptoData_PDFscraper
+# cryptoData_PDFscraper_singlePDF.py
 # v3.0.1
 
-import pdfplumber
-import re
+# Imports
 import os
-import sys
+import re
 import pandas as pd
+import pdfplumber
+import sys
+
+import warnings
+warnings.simplefilter('ignore')
 
 # Build the functions:
 
