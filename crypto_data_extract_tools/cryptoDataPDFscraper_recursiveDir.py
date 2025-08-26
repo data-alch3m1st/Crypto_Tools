@@ -14,7 +14,7 @@ warnings.simplefilter('ignore')
 
 # Functions:
 
-# This iwll use pdfplumber to extract the text first;
+# This will use pdfplumber to extract the text first; 
 def extract_text_from_pdf(pdf_path):
     text = ''
     with pdfplumber.open(pdf_path) as pdf:
