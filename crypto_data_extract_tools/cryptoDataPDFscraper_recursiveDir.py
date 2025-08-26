@@ -5,6 +5,7 @@ import os
 import re
 import pandas as pd
 import pdfplumber
+from tqdm import tqdm
 import sys
 
 import warnings
