@@ -63,13 +63,14 @@ def search_folder_for_crypto_data:
                 pdf_files.append(os.path.join(root, file))
                 # pdf_path = os.path.join(root, file)
                 
-                
-                # Redirect stderr to suppress CropBox warnings
-                sys.stderr = open(os.devnull, 'w')
-                text = extract_text_from_pdf(pdf_path)
-                sys.stderr = sys.__stderr__
-                crypto_data = find_crypto_data(text)
-                folder_name = os.path.basename(root)
+    for pdf_path in tqdm(pdf_files, desc="Processing PDFs"):
+        pdf_count +=1
+        sys.stderr = open(os.devnull, 'w') # Redirect stderr to suppress CropBox warnings
+        text = extract_text_from_pdf(pdf_path)
+        sys.stderr = sys.__stderr__
+        crypto_data = find_crypto_data(text)
+        folder_name = os.path.basename(os.path.dirname(pdf_path))
+        has_positive_match = False
                 for key, value in crypto_data.items():
                     for item in set(value):
                         results.append({
