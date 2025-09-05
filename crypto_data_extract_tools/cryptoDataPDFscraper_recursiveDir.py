@@ -53,10 +53,17 @@ def find_crypto_data(text):
 
 def search_folder_for_crypto_data:
     results = []
+    pdf_count = 0
+    positive_match_pdfs = set()
+    pdf_files = []
+    
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             if file.endswith('.pdf'):
-                pdf_path = os.path.join(root, file)
+                pdf_files.append(os.path.join(root, file))
+                # pdf_path = os.path.join(root, file)
+                
+                
                 # Redirect stderr to suppress CropBox warnings
                 sys.stderr = open(os.devnull, 'w')
                 text = extract_text_from_pdf(pdf_path)
