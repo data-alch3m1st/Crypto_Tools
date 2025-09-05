@@ -84,9 +84,9 @@ def search_folder_for_crypto_data:
                 has_positive_match = True
         if has_positive_match:
             positive_match_pdfs.add(os.path.basename(pdf_path))
-    print()
-            
-                return results
+    print(f"Number of PDF's searched: {pdf_count}")
+    print(f"Number of Unique PDFs with positive matches: {len(positive_match_pdfs)}")
+    return results
 
 # And of course... --> Put the output into a dataframe! ;) 
 
