@@ -93,7 +93,7 @@ def search_folder_for_crypto_data:
 def main(folder_path):
     results = search_folder_for_crypto_data(folder_path)
     df = pd.DataFrame(results)
-    return df 
+    return df
 
 folder_path = './folder/'
 
