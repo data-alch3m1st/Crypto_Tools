@@ -71,16 +71,22 @@ def search_folder_for_crypto_data:
         crypto_data = find_crypto_data(text)
         folder_name = os.path.basename(os.path.dirname(pdf_path))
         has_positive_match = False
-                for key, value in crypto_data.items():
-                    for item in set(value):
-                        results.append({
-                            'Datapoint': item
-                            , 'Type': key
-                            , 'Folder': folder_name
-                            , 'Document': file
-                            , 'Count': value.count(item)
-                        })
-    return results
+        
+        for key, value in crypto_data.items():
+            for item in set(value):
+                results.append({
+                    'Datapoint': item.strip() # strip() to remove any leading/ trailing whitespace;
+                    , 'Type': key
+                    , 'Folder': folder_name
+                    , 'Document': os.path.basename(pdf_path)
+                    , 'Count': value.count(item)
+                    })
+                has_positive_match = True
+        if has_positive_match:
+            positive_match_pdfs.add(os.path.basename(pdf_path))
+    print()
+            
+                return results
 
 # And of course... --> Put the output into a dataframe! ;) 
 
