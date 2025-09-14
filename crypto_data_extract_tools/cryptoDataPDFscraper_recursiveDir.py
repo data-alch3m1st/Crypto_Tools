@@ -37,7 +37,6 @@ def find_crypto_data(text):
     tron_wallets = re.findall(tron_wallet_regex, text)
     evm_tx_hashes = re.findall(evm_tx_hash_regex, text)
     btc_tron_tx_hashes = [match.strip() for match in re.findall(btc_tron_tx_hash_regex, text)]
-    # tron_tx_hashes = re.findall(tron_tx_hash_regex, text)
     
     return {
         'EVM Address': evm_wallets
