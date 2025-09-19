@@ -17,4 +17,8 @@ class OsintHelper:
         Args:
             url (_type_): any url (with or without 'http/https')
         """
-        url = re.sub(f'^https', 'hxxps', url, flags=re.IGNORECASE)
+        url = re.sub(r'^https', 'hxxps', url, flags=re.IGNORECASE)
+        url = re.sub(r'^http', 'hxxp', url, flags=re.IGNORECASE)
+        url = url.replace('.', '[.]')
+        url = url.replace(':', '[:]')       
+        return url
