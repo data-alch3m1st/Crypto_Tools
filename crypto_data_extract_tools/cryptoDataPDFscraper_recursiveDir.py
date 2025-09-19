@@ -24,6 +24,15 @@ def extract_text_from_pdf(pdf_path):
 
 # Set up the regex for each specific datapoint:
 def find_crypto_data(text):
+    """
+    Purpose: Search, isolate and extract any crypto-specific datapoints (e.g., crypto wallet addresses, crypto tx hashes, etc.) from any/all pdf's in a directory.
+
+    Args:
+
+    Returns:
+    
+    """
+    
     # Regular expressions for Ethereum, Bitcoin and Tron wallets and tx hashes (Solana to come in later version;)
     evm_wallet_regex = r'\b0x[a-fA-F0-9]{40}\b'
     btc_wallet_regex = r'\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}|\b[bB][cC]1[pPqP][a-zA-Z0-9]{38,58}'
