@@ -27,3 +27,10 @@ import torchvision
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset, TensorDataset
+
+
+# OCR Reader Initialization (with Chinese support)
+reader = easyocr.Reader(['ch_sim','en'])                       
+translator = GoogleTranslator(source='chinese', target='english')
+
+# Functions:
