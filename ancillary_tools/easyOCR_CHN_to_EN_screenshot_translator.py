@@ -31,6 +31,35 @@ from torch.utils.data import DataLoader, Dataset, TensorDataset
 
 # OCR Reader Initialization (with Chinese support)
 reader = easyocr.Reader(['ch_sim','en'])                       
-translator = GoogleTranslator(source='chinese', target='english')
+translator = GoogleTranslator(source='chinese (simplified)', target='english')
 
 # Functions:
+def extract_and_translate(image_path):
+    # Read image and perform OCR
+    results = reader.readtext(image_path, detail=0)
+    
+    # Filter out empty strings
+    chinese_texts = [text.strip() for text in results if text.strip()]
+    
+    # Translate each line
+    translations = []
+    for text in chinese_texts:
+        try:
+            
+            translated_text = translator.translate(text)
+            translations.append(translated_text)
+        except Exception as e:
+            translations.append(f"Translation Error: {str(e)}")
+            
+    # Create Dataframe
+    df = pd.DataFrame({
+        'Original Chinese Text': chinese_texts
+        , 'Translated English Text': translations
+    })
+    
+    return df
+
+# Example usage:
+image_path = './sample_screenshots/chinese_screenshot1.png' # Replace with your image path
+df_result = extract_and_translate(image_path)
+df_result
