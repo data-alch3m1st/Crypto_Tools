@@ -17,6 +17,13 @@ import sys
 import warnings
 warnings.simplefilter('ignore')
 
-# Torch & EasyOCR Imports
+# Torch & EasyOCR Imports (Need to import numerous PyTorch packages to avoid errors:)
 import easyocr
 from PIL import Image
+import cv2
+
+import torch
+import torchvision
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, Dataset, TensorDataset
