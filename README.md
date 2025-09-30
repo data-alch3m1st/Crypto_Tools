@@ -4,5 +4,16 @@ Collection of helper-type python scripts I've build over the years to assist wit
 
 *Note to self - any code added to added to this directory from a private sandbox directory will superced any versions of the sandbox code;*
 
-`Roadmap:`
+***Current Branches***
+
+`crypto_data_extract_tools`
+
+`crypto_helper_scripts`
+
+`etherscan_tools`
+
+`ancillary_tools`
+
+
+***Roadmap:***
 `Next version needs to include Solana capabilities;`
