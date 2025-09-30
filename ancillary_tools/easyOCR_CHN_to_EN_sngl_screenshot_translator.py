@@ -1,4 +1,4 @@
-# Imports (core & functional)
+# Imports (core & functional) 
 
 import os
 import re
@@ -36,6 +36,7 @@ translator = GoogleTranslator(source='chinese (simplified)', target='english')
 # Functions:
 def extract_and_translate(image_path):
     """Extracts Chinese text from an image and translates it to English.
+       (Current version processes single images; future versions will handle bulk processing.)
 
     Args:
         image_path (str): The file path of the image containing Chinese text.
