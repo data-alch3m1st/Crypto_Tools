@@ -35,6 +35,15 @@ translator = GoogleTranslator(source='chinese (simplified)', target='english')
 
 # Functions:
 def extract_and_translate(image_path):
+    """Extracts Chinese text from an image and translates it to English.
+
+    Args:
+        image_path (str): The file path of the image containing Chinese text.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the original Chinese text and its English translations.
+    """
+    
     # Read image and perform OCR
     results = reader.readtext(image_path, detail=0)
     
@@ -45,7 +54,6 @@ def extract_and_translate(image_path):
     translations = []
     for text in chinese_texts:
         try:
-            
             translated_text = translator.translate(text)
             translations.append(translated_text)
         except Exception as e:
