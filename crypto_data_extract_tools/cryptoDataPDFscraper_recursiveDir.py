@@ -25,12 +25,19 @@ def extract_text_from_pdf(pdf_path):
 # Set up the regex for each specific datapoint:
 def find_crypto_data(text):
     """
-    Purpose: Search, isolate and extract any crypto-specific datapoints (e.g., crypto wallet addresses, crypto tx hashes, etc.) from any/all pdf's in a directory.
+    Purpose: Search, isolate, and extract crypto-specific data points from a given text (PDF).
 
     Args:
+        text (str): The input text from which to extract crypto data.
 
     Returns:
-    
+        dict: A dictionary containing lists of extracted crypto data points:
+            - 'EVM Address': List of Ethereum wallet addresses.
+            - 'Bitcoin Address (all)': List of Bitcoin wallet addresses.
+            - 'Tron Address': List of Tron wallet addresses.
+            - 'EVM Txn Hash': List of Ethereum transaction hashes.
+            - 'Bitcoin (or Tron) Txn Hash': List of Bitcoin or Tron transaction hashes.
+            - 'Tron Txn Hash': List of Tron transaction hashes (currently commented out).
     """
     
     # Regular expressions for Ethereum, Bitcoin and Tron wallets and tx hashes (Solana to come in later version;)
@@ -48,12 +55,12 @@ def find_crypto_data(text):
     btc_tron_tx_hashes = [match.strip() for match in re.findall(btc_tron_tx_hash_regex, text)]
     
     return {
-        'EVM Address': evm_wallets
-        , 'Bitcoin Address (all)': btc_wallets
-        , 'Tron Address': tron_wallets
-        , 'EVM Txn Hash': evm_tx_hashes
-        , 'Bitcoin (or Tron) Txn Hash': btc_tron_tx_hashes
-        , 'Tron Txn Hash':  tron_tx_hashes
+        'EVM Address': evm_wallets,
+        'Bitcoin Address (all)': btc_wallets,
+        'Tron Address': tron_wallets,
+        'EVM Txn Hash': evm_tx_hashes,
+        'Bitcoin (or Tron) Txn Hash': btc_tron_tx_hashes,
+        'Tron Txn Hash': tron_tx_hashes
     }
     
 
